@@ -1,0 +1,12 @@
+<!-- 2.2.2 afficher chaque item dans la boucle ) l'aide de 2 p -->
+  <p>Référence: {{item.reference}}</p>
+  <p>Nom: {{item.name}}</p>
+  
+  <!-- directive *ngIf pour conditionner l'affichage des états -->
+  <p class="state-0" *ngIf="0==item.state">A livrer</p>
+  <p class="state-1" *ngIf="1==item.state">En cours de livraison</p>
+  <p class="state-2" *ngIf="2==item.state">Commande livrée</p>
+
+ <!-- cette syntaxe avec () : envoyer qch depuis le template vers ts ; dans l'autre sens: [ ]; syncronisation entre les deux: ( ) et [  ] -->
+  <button (click)="getDetails($event)" id="{{ item.reference }}">Détail</button>
+  <hr>

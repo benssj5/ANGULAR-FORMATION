@@ -1,0 +1,23 @@
+
+<h1>
+  {{ title }}
+</h1>
+<h2>
+  {{ version }}
+</h2>
+
+
+<form #itemForm="ngForm">
+  <input [(ngModel)] = "newItem.reference" name="reference" required minlength="4" #ref="ngModel">
+  <span [hidden]="ref.valid || ref.pristine">Champ invalide</span><!-- pristine : tant que le champ n'a pas été modifié-->
+  <input [(ngModel)] = "newItem.name" name="name" required>
+  <input [(ngModel)] = "newItem.state" name="state" required>
+  
+  <button [disabled]="!itemForm.valid" (click)="createObject()">ajouter commande</button>
+</form>
+
+
+<div *ngFor="let item of collection"><!-- let permet d'initialiser une variable' -->
+  <!--11.2.1 dans le selector <item-component> on utilise l'EventEmitter-->
+  <item-component [item]="item" (onGetDetails) = "getDetails($event)"></item-component>
+</div>

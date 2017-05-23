@@ -1,0 +1,24 @@
+
+<h1>
+  {{ title }}
+</h1>
+<h2>
+  {{ version }}
+</h2>
+
+
+<form #itemForm="ngForm">
+  <input [(ngModel)] = "newItem.reference" name="reference" required minlength="4" #ref="ngModel">
+  <span [hidden]="ref.valid || ref.pristine">Champ invalide</span><!-- pristine : tant que le champ n'a pas été modifié-->
+  <input [(ngModel)] = "newItem.name" name="name" required>
+  <input [(ngModel)] = "newItem.state" name="state" required>
+  
+  <button [disabled]="!itemForm.valid" (click)="createObject()">ajouter commande</button>
+</form>
+
+ <!--10.1.1 couper coller contenu de la boucle for depuis app.component.html-->
+<div *ngFor="let item of collection"><!-- let permet d'initialiser une variable' -->
+  <!-- relier aux fichier item.component.ts|htlm|css -->
+  <!--10.3.1 utiliser @input() item dans la balise <item-component>-->
+  <item-component [item]="item"></item-component>
+</div>

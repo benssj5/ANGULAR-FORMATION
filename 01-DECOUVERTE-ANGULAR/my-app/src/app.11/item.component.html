@@ -1,0 +1,9 @@
+ 
+  
+ <p>Référence : {{ item.reference }}</p>
+ <p>Nom : {{ item.name }}</p>
+ <p class="state-0" *ngIf="0==item.state" >A livrer</p>
+ <p class="state-1" *ngIf="1==item.state" >En livraison</p>
+ <p class="state-2" *ngIf="2==item.state" >Commande livrée</p>
+ <button (click)="getDetails($event)" id="{{ item.reference}}" >Détail</button>
+ <hr/>

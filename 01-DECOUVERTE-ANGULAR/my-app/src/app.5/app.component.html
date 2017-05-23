@@ -1,0 +1,27 @@
+
+<!-- 1.2.1 afficher variables dans le template html -->
+<h1>
+  {{ title }}
+</h1>
+<h2>
+  {{ version }}
+</h2>
+
+<!--{{ collection | }}-->
+<!--2.2.1 utilise directive *ngFor pour afficher la collection dans une boucle-->
+<div *ngFor="let item of collection"><!-- let permet d'initialiser une variable' -->
+ <!--2.2.2 afficher chaque item dans la boucle à l'aide de 2 <p>-->
+  <p>Référence : {{ item.reference }}</p>
+  <p>Nom : {{ item.name }}</p>
+
+  <!--3.2.1 directive *ngIf pour conditionner l'affichage des états-->
+  <p class="state-0" *ngIf="0==item.state" >A livrer</p>
+  <p class="state-1" *ngIf="1==item.state" >En livraison</p>
+  <p class="state-2" *ngIf="2==item.state" >Commande livrée</p>
+
+<!--5.1.1 add button avec click pour appel getDetails() en lui passant $event en argument, et un argument personnalisé-->
+<!--5.1.2 add attribut id dans le button avec item.reference comme valeur-->
+  <button (click)="getDetails($event, 'test')" id="{{ item.reference}}" >Détail</button>
+
+  <hr/>
+</div>

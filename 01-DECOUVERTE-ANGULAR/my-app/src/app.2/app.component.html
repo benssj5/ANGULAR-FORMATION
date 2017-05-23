@@ -1,0 +1,17 @@
+
+<!-- 1.2.1 afficher variables dans le template html -->
+<h1>
+  {{ title }}
+</h1>
+<h2>
+  {{ version }}
+</h2>
+
+<!--{{ collection | }}-->
+<!--2.2.1 utilise directive *ngFor pour afficher la collection dans une boucle-->
+<div *ngFor="let item of collection"><!-- let permet d'initialiser une variable' -->
+ <!--2.2.2 afficher chaque item dans la boucle à l'aide de 2 <p>-->
+  <p>Référence : {{ item.reference }}</p>
+  <p>Nom : {{ item.name }}</p>
+  <hr/>
+</div>

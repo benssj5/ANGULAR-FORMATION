@@ -1,0 +1,20 @@
+<!-- afficher variables dans template html -->
+<h1>
+  {{ title }}
+</h1>
+<h2>
+  {{ version }}
+</h2>
+
+<!--{{ collection | json }}-->
+
+<itemform-component (onCreateObject)="createObject($event)"></itemform-component><!-- affiche le composant formulaire -->
+
+<!--2.2.1 utiliser directive *ngFor pour afficher la collection dans une boucle-->
+<div *ngFor="let item of collection">
+  <!-- 11.2.1 dans le selector <item-component> on utilise l'EventEmitter pour appeler la fonction getDetails qui se trouve sur ce composant. -->  
+  <item-component [item]="item" (onGetDetails)="getDetails($event)"></item-component><!-- pour afficher le composant 
+  qu'on a créé (fichier item.component.html) 
+  onGetDetails: remplace l'evenement click -> va declencher getDetails
+  -->
+</div>

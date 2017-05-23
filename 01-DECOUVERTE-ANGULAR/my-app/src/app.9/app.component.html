@@ -1,0 +1,35 @@
+
+<h1>
+  {{ title }}
+</h1>
+<h2>
+  {{ version }}
+</h2>
+
+<!--9.1.1 add form avec une reference #itemForm="ngForm"-->
+<form #itemForm="ngForm">
+    <!--9.1.2 add attr html aux input (name, required, minLength)-->
+    <!--9.1.4 add #ref sur premier input cablé à ngModel-->
+  <input [(ngModel)] = "newItem.reference" name="reference" required minlength="4" #ref="ngModel">
+  <!--9.1.5 add span avec directive [hidden] pour afficher message erreur si champ mal rempli-->
+  <span [hidden]="ref.valid || ref.pristine">Champ invalide</span><!-- pristine : tant que le champ n'a pas été modifié-->
+  <input [(ngModel)] = "newItem.name" name="name" required>
+  <input [(ngModel)] = "newItem.state" name="state" required>
+  <!--{{newItem | json}};-->
+
+  <!--9.1.3 use directive [disabled]="!itemForm.valid" qui rend disabled le bouton tant que le formulaire est invalide-->
+  <button [disabled]="!itemForm.valid" (click)="createObject()">ajouter commande</button>
+</form>
+
+<div *ngFor="let item of collection"><!-- let permet d'initialiser une variable' -->
+  <p>Référence : {{ item.reference }}</p>
+  <p>Nom : {{ item.name }}</p>
+
+  <p class="state-0" *ngIf="0==item.state" >A livrer</p>
+  <p class="state-1" *ngIf="1==item.state" >En livraison</p>
+  <p class="state-2" *ngIf="2==item.state" >Commande livrée</p>
+
+  <button (click)="getDetails($event, 'test')" id="{{ item.reference}}" >Détail</button>
+
+  <hr/>
+</div>

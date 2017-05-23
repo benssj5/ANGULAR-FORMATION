@@ -1,0 +1,30 @@
+
+<h1>
+  {{ title }}
+</h1>
+<h2>
+  {{ version }}
+</h2>
+
+<!--6.3.1 add 3 balises input avec directive ngModel cablée à un nouvel objet newItem-->
+<input [(ngModel)] = "newItem.reference">
+<input [(ngModel)] = "newItem.name">
+<input [(ngModel)] = "newItem.state">
+{{newItem | json}};
+
+<!--6.1.1 add button avec click qui appel createObject()-->
+<button (click)="createObject()">ajouter commande</button>
+
+
+<div *ngFor="let item of collection"><!-- let permet d'initialiser une variable' -->
+  <p>Référence : {{ item.reference }}</p>
+  <p>Nom : {{ item.name }}</p>
+
+  <p class="state-0" *ngIf="0==item.state" >A livrer</p>
+  <p class="state-1" *ngIf="1==item.state" >En livraison</p>
+  <p class="state-2" *ngIf="2==item.state" >Commande livrée</p>
+
+  <button (click)="getDetails($event, 'test')" id="{{ item.reference}}" >Détail</button>
+
+  <hr/>
+</div>

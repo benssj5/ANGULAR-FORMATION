@@ -1,0 +1,11 @@
+  <form #itemForm="ngForm"><!-- #itemForm : comme si on donnait un nom au formulaire -->
+  <!-- 9.1.4 add #ref sur le premier input cablé à ngModel  -->
+    <input [(ngModel)]="newItem.reference" name="reference" required minlength="4" #ref="ngModel"><!-- [()] car synchronisation entre html et ts -->
+    <!--  9.1.5 add span avec directive [hidden] pour afficher message erreur si champ mal rempli  -->
+    <span [hidden]="ref.valid || ref.pristine">Champ invalide</span><!-- ref.valid: tant que champ n'est pas valide; ref.pristine: tant que le champ n'a pas été modifié (au chargement de la page, le champ n'a pas encore été modifié) -->
+    <input [(ngModel)]="newItem.name" name="name" required>
+    <input [(ngModel)]="newItem.state" name="state" required>
+ 
+  <button [disabled]="!itemForm.valid" (click)="createObject()">Ajouter commande</button>
+  
+  </form>
