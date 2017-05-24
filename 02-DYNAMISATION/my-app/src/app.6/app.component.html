@@ -1,0 +1,10 @@
+<!--6.4.1 utiliser le selecteur <app-title> pour afficher la template title.cmoponent.html-->
+<app-title></app-title>
+
+Filter la liste : <input #listFilter (keyup)="0">
+<itemform-component (onCreateObject)="createObject($event)"></itemform-component>
+
+<div *ngFor="let item of collection | itemFilter:listFilter.value">
+  <item-component [item]="item" (onGetDetails)="getDetails($event)"></item-component> 
+ 
+</div>

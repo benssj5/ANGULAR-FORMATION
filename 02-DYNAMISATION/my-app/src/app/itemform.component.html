@@ -1,0 +1,27 @@
+<!-- Itemform doit afficher le formulaire-->
+<form #itemForm="ngForm" class="form">
+
+  <h4>Ajouter une commande</h4>
+
+  <div class="form-group">
+    <input [(ngModel)]="newItem.reference" name="reference" required minlength="4" #ref="ngModel" placeholder="Reference ex: 1234"
+      class="form-control">
+    <div class="alert alert-danger" [hidden]="ref.valid || ref.pristine || !newItem.reference">Champ invalide, format: 1234</div>
+  </div>
+
+  <div class="form-group">
+    <input [(ngModel)]="newItem.name" name="name" required placeholder="Nom et prénom du client" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <select [(ngModel)]="newItem.state" name="state" required class="form-control">
+        <option value="0">A livrer</option>
+        <option value="1">En cours de livraison</option>
+        <option value="2">livrée</option>
+      </select>
+  </div>
+
+
+  <button [disabled]="!itemForm.valid" (click)="createObject()" class="btn btn-primary">Ajouter commande</button>
+
+</form>

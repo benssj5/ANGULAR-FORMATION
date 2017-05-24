@@ -1,0 +1,15 @@
+<!--2.2.1 ajout click pour appeler fonction toggleAnimateState()-->
+<!--2.6.1referencer le trigger sur le div panel-defaut et cabler à la propriété animateState-->
+<div class="panel panel-default" (click)="item.toggleAnimateState()" [@itemAnimateState]="item.animateState" >
+  <div class="panel-heading">
+    <span>Référence: {{item.reference}}</span>
+
+    <span class="state-0 pull-right" *ngIf="0==item.state">A livrer</span>
+    <span class="state-1 pull-right" *ngIf="1==item.state">En cours de livraison</span>
+    <span class="state-2 pull-right" *ngIf="2==item.state">Commande livrée</span>
+  </div>
+  <div class="panel-body">
+    <p>Nom : {{item.name}} </p>
+  </div>
+</div>
+

@@ -1,0 +1,14 @@
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span>Référence: {{item.reference}}</span>
+
+    <span class="state-0 pull-right" *ngIf="0==item.state">A livrer</span>
+    <span class="state-1 pull-right" *ngIf="1==item.state">En cours de livraison</span>
+    <span class="state-2 pull-right" *ngIf="2==item.state">Commande livrée</span>
+  </div>
+  <div class="panel-body">
+    <p>Nom : {{item.name}} </p>
+  </div>
+</div>
+

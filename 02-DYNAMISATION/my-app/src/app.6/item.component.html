@@ -1,0 +1,27 @@
+
+<!--5.3.1 modifier *ngIf pour supprimer panel si animateState === 'removedFromDom'-->
+<!--5.3.2 directive [ngClass] pour class rubberBand ou fadeOut selon valeur de animateState-->
+<div class="panel panel-default animated" *ngIf="item.animateState !== 'removedFromDom'" 
+   [ngClass]="{'rubberBand': item.animateState !== 'removedFromDom',
+               'fadeOut' : item.animateState==='removed'}" >
+  <div class="panel-heading">
+    <span>Référence: {{item.reference}}</span>
+
+    <span class="state-0 pull-right" *ngIf="0==item.state">A livrer</span>
+    <span class="state-1 pull-right" *ngIf="1==item.state">En cours de livraison</span>
+    <span class="state-2 pull-right" *ngIf="2==item.state">Commande livrée</span>
+  </div>
+  <div class="panel-body">
+    <p>Nom : {{item.name}} </p>
+    
+    <div *ngIf="2 != item.state">
+      Changer de status :
+      <button (click)="changeState($event, 1)" *ngIf="1 != item.state" class="btn btn-primary">En cours de livraison</button>
+      <button (click)="changeState($event, 2)" class="btn btn-primary">Livrée</button>
+    </div>
+    <div *ngIf="2 === item.state">
+      <button (click)="deleteItem()"  class="btn btn-danger"><span class="glyphicon glyphicon-trash"> Supprimer</span></button>
+    </div>
+  </div>
+</div>
+
