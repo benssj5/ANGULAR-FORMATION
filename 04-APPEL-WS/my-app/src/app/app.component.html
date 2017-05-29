@@ -1,0 +1,24 @@
+<h1>
+  {{title}}
+</h1>
+
+<label class="blue">Listes de tous les auteurs</label>
+
+<select  (change)="onSelectionChange($event)" >
+  <option *ngFor="let a of auteurs" value="{{a.id}}" >
+                    {{a.id}} {{a.nom}} {{a.prenom}}</option>
+</select>
+
+<hr/>
+
+<div *ngIf="sA">
+  id: {{sA.id}} <br/>
+  nom: <input type='text' [(ngModel)]="sA.nom" /> <br/>
+  prenom: <input type='text' [(ngModel)]="sA.prenom" /> <br/>
+  <br/>
+  <button (click)="onUpdateAuteur()">update</button>
+</div>
+
+
+
+
